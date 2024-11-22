@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Адмін панель</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Адмін панель - Повідомлення зворотнього зв'язку</h1>
+    {% if feedbacks %}
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Ім'я</th>
+                    <th>Електронна пошта</th>
+                    <th>Повідомлення</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for feedback in feedbacks %}
+                    <tr>
+                        <td>{{ feedback.name }}</td>
+                        <td>{{ feedback.email }}</td>
+                        <td>{{ feedback.message }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('delete_feedback', id=feedback.id) }}" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Немає повідомлень зворотнього зв'язку.</p>
+    {% endif %}
+
+    <h1 class="mt-5">Адмін панель - Підписки</h1>
+    {% if subscriptions %}
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Ім'я</th>
+                    <th>Електронна пошта</th>
+                    <th>План</th>
+                    <th>Статус</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subscription in subscriptions %}
+                    <tr>
+                        <td>{{ subscription.name }}</td>
+                        <td>{{ subscription.email }}</td>
+                        <td>{{ subscription.plan }}</td>
+                        <td>{{ "Активна" if subscription.active else "Скасована" }}</td>
+                        <td>
+                            {% if subscription.active %}
+                                <form method="POST" action="{{ url_for('cancel_subscription', id=subscription.id) }}" style="display:inline;">
+                                    <button type="submit" class="btn btn-warning btn-sm">Скасувати</button>
+                                </form>
+                            {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled>Вже скасована</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Немає підписок.</p>
+    {% endif %}
+</div>
+{% endblock %}
