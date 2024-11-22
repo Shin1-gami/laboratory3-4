@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Хмарне середовище VDR</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">Ласкаво просимо на VDR!</h1>
+      <p class="lead">Тут ви можете замовити додаткове хмарне середовище для ваших файлів. Безпечно, надійно, зручно!</p>
+  </div>
+
+  <div class="row mb-3 text-center">
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card mb-4 shadow-sm h-100">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Lite</h4>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title pricing-card-title">$5<small class="text-muted">/місяць</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>10 членів користування</li>
+            <li>10 GB пам'яті</li>
+            <li>Підтримка по елетронній пошті</li>
+          </ul>
+          <a class="w-100 btn btn-lg btn-primary" href="/subscribe">Замовити</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card mb-4 shadow-sm h-100">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Pro</h4>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title pricing-card-title">$20<small class="text-muted">/місяць</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>15 членів користування</li>
+            <li>20 GB пам'яті</li>
+            <li>Пріорітет по підтримці</li>
+          </ul>
+          <a class="w-100 btn btn-lg btn-primary" href="/subscribe">Замовити</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card mb-4 shadow-sm border-primary text-center h-100">
+        <div class="card-header text-bg-primary border-primary">
+          <h4 class="my-0 fw-normal">Max</h4>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title pricing-card-title">$49<small class="text-muted fw-light">/місяць</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>30 членів користування</li>
+            <li>30 GB пам'яті</li>
+            <li>Підтримка по телефону та пошті</li>
+          </ul>
+          <a class="w-100 btn btn-lg btn-primary" href="/subscribe">Замовити</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

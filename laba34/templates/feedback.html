@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Зворотній зв'язок</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Зворотній зв'язок</h1>
+    <form method="post" onsubmit="return validateEmail()">
+        <div class="mb-3">
+            <label for="name" class="form-label">Ваше ім'я</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Введіть ваше ім'я" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Ваша пошта</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Введіть вашу пошту" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="message" class="form-label">Ваше повідомлення</label>
+            <textarea class="form-control" name="message" id="message" rows="4" placeholder="Введіть ваше повідомлення" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Відправити</button>
+    </form>
+</div>
+
+<script>
+    // Перевірка, чи є символ "@" в електронній пошті
+    function validateEmail() {
+        var email = document.getElementById('email').value;
+        if (email.indexOf('@') === -1) {
+            alert("Будь ласка, введіть коректну електронну пошту з символом '@'.");
+            return false; // Зупиняє відправку форми, якщо перевірка не пройдена
+        }
+        return true; // Якщо символ "@" є, форма буде відправлена
+    }
+</script>
+
+{% endblock %}
