@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Оформлення підписки</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Оформлення підписки</h1>
+    <form method="POST" action="{{ url_for('subscribe') }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Ім'я</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Електронна пошта</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="plan" class="form-label">Виберіть план</label>
+            <select class="form-control" id="plan" name="plan" required>
+                <option value="Lite">Lite - $5/місяць</option>
+                <option value="Pro">Pro - $20/місяць</option>
+                <option value="Max">Max - $49/місяць</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Оформити підписку</button>
+    </form>
+</div>
+{% endblock %}

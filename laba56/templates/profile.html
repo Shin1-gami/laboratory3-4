@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Профіль користувача</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Профіль користувача</h2>
+    <p><strong>Ім'я:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <h3>Ваші підписки:</h3>
+    {% if subscriptions %}
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Назва плану</th>
+                    <th>Статус</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subscription in subscriptions %}
+                    <tr>
+                        <td>{{ subscription.plan }}</td>
+                        <td>{{ "Активна" if subscription.active else "Скасована" }}</td>
+                        <td>
+                            {% if subscription.active %}
+                                <form method="POST" action="{{ url_for('cancel_subscription', id=subscription.id) }}" style="display:inline;">
+                                    <button type="submit" class="btn btn-warning btn-sm">Скасувати</button>
+                                </form>
+                            {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled>Вже скасована</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>У вас немає підписок.</p>
+    {% endif %}
+</div>
+{% endblock %}
